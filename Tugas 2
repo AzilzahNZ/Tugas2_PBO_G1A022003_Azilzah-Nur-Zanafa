@@ -1,0 +1,73 @@
+class Mahasiswa:  #Mendefinisikan sebuah kelas bernama Mahasiswa
+    def __init__(self, nama, nim, jurusan):   #Mendefinisikan metode khusus (konstruktor) __init__ yang akan dieksekusi saat objek dari kelas Mahasiswa dibuat. Metode ini mengambil tiga parameter: nama, nim, dan jurusan.
+        self.nama = nama   #Membuat atribut nama untuk objek yang sedang dibuat dan menginisialisasinya dengan nilai dari parameter nama.
+        self.nim = nim    #Membuat atribut nim untuk objek yang sedang dibuat dan menginisialisasinya dengan nilai dari parameter nim.
+        self.jurusan = jurusan  #Membuat atribut jurusan untuk objek yang sedang dibuat dan menginisialisasinya dengan nilai dari parameter jurusan.
+   
+
+    def tampilkan_info(self):   #Mendefinisikan metode tampilkan_info yang akan menampilkan informasi mahasiswa.
+        print("Nama :", self.nama)  #Mencetak teks "Nama :" diikuti dengan nilai dari atribut nama objek yang memanggil metode ini.
+        print("NIM :", self.nim)    #Mencetak teks "NIM :" diikuti dengan nilai dari atribut nim objek yang memanggil metode ini.
+        print("Jurusan :", self.jurusan.NamaJurusan)   #Mencetak teks "Jurusan :" diikuti dengan nilai dari atribut NamaJurusan dari objek jurusan yang memanggil metode ini. Mencetak teks "Jurusan :" diikuti dengan nilai dari atribut NamaJurusan dari objek jurusan yang memanggil metode ini. Terdapat asumsi bahwa objek jurusan ini memiliki atribut NamaJurusan.
+
+
+class Jurusan:   #Mendefinisikan sebuah kelas bernama Jurusan.
+    def __init__(self, nama_jurusan):   #Mendefinisikan metode __init__ dengan parameter nama_jurusan yang digunakan untuk menginisialisasi objek jurusan.
+        self.NamaJurusan = nama_jurusan    #Menginisialisasi atribut NamaJurusan dari objek jurusan dengan nilai nama_jurusan.
+        self.DaftarMahasiswa = []      #Menginisialisasi atribut DaftarMahasiswa dari objek jurusan dengan list kosong.
+
+    def tambah_mahasiswa(self, mahasiswa):   #Mendefinisikan metode tambah_mahasiswa dengan parameter mahasiswa.
+        self.DaftarMahasiswa.append(mahasiswa)  #Untuk menambahkan objek mahasiswa ke dalam daftar mahasiswa DaftarMahasiswa pada objek jurusan.
+   
+    def tampilkan_daftar_mahasiswa(self):   #Mendefinisikan metode tampilkan_daftar_mahasiswa.
+        if len(self.DaftarMahasiswa) == 0:   #Memeriksa apakah daftar mahasiswa kosong.
+            print("\nBelum ada mahasiswa yang terdaftar dalam jurusan ini.", self.NamaJurusan)   #Apabila daftar kosong maka akan mencetak pesan bahwa belum ada mahasiswa yang terdaftar dalam jurusan ini.
+        else:   #Jika daftar mahasiswa tidak kosong, lanjut ke baris berikutnya.
+            print("\nBerikut daftar mahasiswa yang terdaftar di jurusan", self.NamaJurusan, ':')   #Dan akan encetak pesan yang menampilkan daftar mahasiswa yang terdaftar di jurusan.
+            for mahasiswa in self.DaftarMahasiswa:    #Melakukan iterasi pada setiap objek mahasiswa dalam daftar mahasiswa DaftarMahasiswa.
+                print("Nama :", mahasiswa.nama)   #Mencetak nama mahasiswa.
+                print("NIM  :", mahasiswa.nim)   #Mencetak NIM mahasiswa.
+
+
+class Universitas:    #Mendefinisikan sebuah kelas bernama Universitas.
+    def __init__(self, nama_universitas):   #Mendefinisikan sebuah metode inisialisasi (constructor) untuk kelas Universitas. Metode ini akan dipanggil ketika objek universitas baru dibuat. Parameter nama_universitas digunakan untuk menyimpan nama universitas dalam atribut 
+        self.NamaUniversitas = nama_universitas   #Menginisialisasi atribut NamaUniversitas dengan nilai yang diterima sebagai argumen saat objek universitas dibuat.
+        self.DaftarJurusan = []   #Menginisialisasi atribut DaftarJurusan dengan daftar kosong. Atribut ini akan digunakan untuk menyimpan daftar jurusan yang terdaftar di universitas.
+
+    def tambah_jurusan(self, jurusan):   #Mendefinisikan sebuah metode untuk menambahkan jurusan baru ke dalam daftar jurusan universitas. Metode ini menerima argumen jurusan yang akan ditambahkan ke DaftarJurusan.
+        self.DaftarJurusan.append(jurusan)    #Menambahkan objek jurusan ke dalam daftar DaftarJurusan.
+  
+    def tampilkan_daftar_jurusan(self):    #Mendefinisikan sebuah metode untuk menampilkan daftar jurusan yang terdaftar di universitas.
+        if len(self.DaftarJurusan) == 0:   #Memeriksa apakah daftar DaftarJurusan kosong.
+            print("\nBelum ada jurusan yang terdaftar di", self.NamaUniversitas,".")   #Menampilkan pesan jika daftar jurusan kosong.
+        else:   #Eksekusi blok kode berikutnya jika daftar jurusan tidak kosong.
+            print("\nBerikut daftar jurusan yang ada di", self.NamaUniversitas, ':')   #Menampilkan pesan yang memberikan informasi tentang daftar jurusan yang akan ditampilkan.
+            for jurusan in self.DaftarJurusan:  #Iterasi melalui setiap objek jurusan dalam daftar DaftarJurusan.
+                print("-", jurusan.NamaJurusan)   #Menampilkan nama jurusan dengan akses ke atribut NamaJurusan pada objek jurusan.
+
+
+univ = Universitas("XYZ University")
+#objek univ dibuat sebagai contoh objek dari kelas "Universitas" dengan nama "XYZ University"
+print("**** {:^65} ****".format("SELAMAT DATANG DI XYZ University"))
+#baris kode untuk mencetak pesan selamat datang di universitas XYZ University dengan tata letak yang terpusat dan diapit oleh bintang.
+
+jurusan1 = Jurusan("Teknik Informatika")   #Membuat objek jurusan1 dari kelas Jurusan dengan parameter "Teknik Informatika".
+jurusan2 = Jurusan("Teknik Sipil")   #Membuat objek jurusan2 dari kelas Jurusan dengan parameter "Teknik Sipil".
+jurusan3 = Jurusan("Psikologi")   #Membuat objek jurusan3 dari kelas Jurusan dengan parameter "Psikologi".
+jurusan4 = Jurusan("Sastra Inggris")   #Membuat objek jurusan4 dari kelas Jurusan dengan parameter "Sastra Inggris".
+#objek-objek jurusan seperti "Teknik Informatika", "Teknik Sipil", "Psikologi", dan "Sastra Inggris" dibuat sebagai contoh objek dari kelas "Jurusan". Objek-objek ini kemudian ditambahkan ke daftar jurusan di objek univ.
+univ.tambah_jurusan(jurusan1)  #Menambahkan objek jurusan1 ke daftar jurusan di objek univ.
+univ.tambah_jurusan(jurusan2)  #Menambahkan objek jurusan2 ke daftar jurusan di objek univ.
+univ.tambah_jurusan(jurusan3)  #Menambahkan objek jurusan3 ke daftar jurusan di objek univ.
+univ.tambah_jurusan(jurusan4)  #Menambahkan objek jurusan4 ke daftar jurusan di objek univ.
+
+mahasiswa = Mahasiswa("Azilzah Nur Zanafa", "G1A022003", jurusan1)
+#Kode ini membuat sebuah objek Mahasiswa dengan nama "Azilzah Nur Zanafa", nim "G1A022003", dan menggunakan variabel jurusan1 sebagai parameter. Mahasiswa adalah sebuah kelas yang telah didefinisikan sebelumnya.
+jurusan1.tambah_mahasiswa(mahasiswa)
+#Kode ini memanggil metode tambah_mahasiswa pada objek jurusan1 dan meneruskan objek mahasiswa sebagai argumen. Metode ini kemungkinan akan menambahkan objek mahasiswa ke dalam koleksi mahasiswa yang terkait dengan objek jurusan tersebut.
+
+univ.tampilkan_daftar_jurusan()
+#metode tampilkan_daftar_jurusan dari objek univ dipanggil untuk menampilkan daftar jurusan yang ada di universitas.
+
+jurusan1.tampilkan_daftar_mahasiswa()
+#metode tampilkan_daftar_mahasiswa dari objek jurusan1 dipanggil untuk menampilkan daftar mahasiswa yang terdaftar di jurusan "Teknik Informatika".
